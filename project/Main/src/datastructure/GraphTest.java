@@ -30,9 +30,24 @@ class GraphTest {
         graph.insertEdge(9,7);
 
         System.out.println(graph);
+    }
 
+    @org.junit.jupiter.api.Test
+    void testCase() {
+        Graph grr= new Graph();
+        grr.insertEdge(1,2);
+        grr.insertEdge(2,3);
+        grr.insertEdge(3,1);
+        grr.insertEdge(4,1);
+        grr.insertEdge(2,4);
+
+        assertEquals(grr.getShortestPath(1,3),2);
+        grr.insertEdge(4,5);
+        assertEquals(grr.getShortestPath(1,5),3);
+        assertEquals(grr.getShortestPath(5,1),-1);
 
     }
+
     @org.junit.jupiter.api.Test
     void insertEdge() {
         assertTrue(graph.insertEdge(7,6));

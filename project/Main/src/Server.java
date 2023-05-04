@@ -28,6 +28,13 @@ public class Server{
     
     private static IGraph readGraph(){
         IGraph graph= new Graph();
+        graph.insertEdge(1,2);
+        graph.insertEdge(2,3);
+        graph.insertEdge(3,1);
+        graph.insertEdge(4,1);
+        graph.insertEdge(2,4);
+
+        /*
         Scanner sc= new Scanner(System.in);
         while(true){
             String line= sc.nextLine();
@@ -40,7 +47,7 @@ public class Server{
             }
             graph.insertEdge(Integer.parseInt(splitter[0]),Integer.parseInt(splitter[1]));
         }
-        sc.close();
+        sc.close();*/
         return graph;
     }
 }

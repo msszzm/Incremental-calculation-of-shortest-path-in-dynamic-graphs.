@@ -32,20 +32,27 @@ public class Graph implements IGraph {
         TreeMap<Integer,Integer> priorityQueue= new TreeMap<>();
         priorityQueue.put(n1, 0);
         HashSet<Integer> visited= new HashSet<>();
-        while(!priorityQueue.isEmpty()){
-            int node= priorityQueue.firstKey();
-            int distance= priorityQueue.get(node);
-            priorityQueue.pollFirstEntry();
-            visited.add(node);
-            HashSet<Integer> neighbors= this.graph.get(node);
-            for(int neighbor : neighbors){
-                if(neighbor == n2)//Found!
-                    return distance+1;
-                if(!visited.contains(neighbor))
-                    priorityQueue.put(neighbor, distance+1);
-            }   
+        try {
+            while (!priorityQueue.isEmpty()) {
+                int node = priorityQueue.firstKey();
+                int distance = priorityQueue.get(node);
+                priorityQueue.pollFirstEntry();
+                visited.add(node);
+                HashSet<Integer> neighbors = this.graph.get(node);
+                if(neighbors == null)
+                    continue;
+                for (int neighbor : neighbors) {
+                    if (neighbor == n2)//Found!
+                        return distance + 1;
+                    if (!visited.contains(neighbor))
+                        priorityQueue.put(neighbor, distance + 1);
+                }
+            }
+            return -1; //No Path Found!
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
         }
-        return -1; //No Path Found!
     }
 
     private void insertIfNotFound(int node){
