@@ -22,6 +22,8 @@ public class Graph implements IGraph {
     }
     @Override
     public boolean deleteEdge(int node1, int node2) {
+        if(this.graph.get(node1) == null)
+            return true;
         if(!this.graph.get(node1).contains(node2))
             return false; //It is not there!
         this.graph.get(node1).remove(node2);

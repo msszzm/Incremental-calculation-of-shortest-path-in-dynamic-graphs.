@@ -18,8 +18,8 @@ public class Server{
         BatchHandler batchHandler= new BatchHandler(graph);
         try{
             IRemoteBatch remoteStub=(IRemoteBatch) UnicastRemoteObject.exportObject(batchHandler, 0);
-            Registry registry= LocateRegistry.getRegistry();
-            registry.rebind("Batch", remoteStub);
+            Registry registry= LocateRegistry.createRegistry(1099);
+            registry.rebind("Update", remoteStub);
             System.out.println("Server is ready for action!");
         }catch(Exception e){
             e.printStackTrace();

@@ -16,20 +16,23 @@ public class BatchHandler implements IRemoteBatch {
     }
 
     @Override
-    public synchronized String executeBatch(String command) throws RemoteException {
+    public  synchronized String executeBatch(String command) throws RemoteException {
+//        System.out.println("Serving");
+        String g= this.graph.toString();
         String[] lines= command.split("\n");
         String message="";
         for(String line : lines) {
             message += execute(line);
         }
-        System.out.println(message);
-        return message;
+        //System.out.println(message);
+//        System.out.println("Done");
+        return g+message;
     }
-    private String execute(String line){
+    private  String execute(String line){
         if(line.charAt(0)=='F')
             return "";
         String[] query= line.split(" ");
-        System.out.println(Arrays.toString(query));
+        //System.out.println(Arrays.toString(query));
         int node1= Integer.parseInt(query[1]);
         int node2= Integer.parseInt(query[2]);
 
