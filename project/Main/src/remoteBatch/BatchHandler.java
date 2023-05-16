@@ -8,31 +8,29 @@ import java.util.Arrays;
 
 public class BatchHandler implements IRemoteBatch {
     private IGraph graph;
+    private static int counter= 0;
+
 
     public BatchHandler(IGraph graph){
         super();
         this.graph= graph;
-        System.out.println(this.graph);
     }
 
     @Override
     public  synchronized String executeBatch(String command) throws RemoteException {
-//        System.out.println("Serving");
         String g= this.graph.toString();
         String[] lines= command.split("\n");
         String message="";
         for(String line : lines) {
             message += execute(line);
         }
-        //System.out.println(message);
-//        System.out.println("Done");
-        return g+message;
+
+        return "Query : "+(counter++)+"\n"+message;
     }
     private  String execute(String line){
         if(line.charAt(0)=='F')
             return "";
         String[] query= line.split(" ");
-        //System.out.println(Arrays.toString(query));
         int node1= Integer.parseInt(query[1]);
         int node2= Integer.parseInt(query[2]);
 
@@ -48,5 +46,4 @@ public class BatchHandler implements IRemoteBatch {
         }
         return "ERROR";
     }
-
 }
