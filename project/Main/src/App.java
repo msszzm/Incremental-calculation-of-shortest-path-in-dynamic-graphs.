@@ -1,5 +1,9 @@
 public class App {
+
+
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        Integer x= 55;
+//        implement(x);
+        System.out.println(x);
     }
 }
