@@ -5,18 +5,20 @@ import datastructure.IGraph;
 public class QueryExecutor implements Runnable{
 
     private IGraph graph;
-    private int from;
-    private int to;
-    private int index;
+    private final int from;
+    private final int to;
+    private final int index;
     private int shortestDistance;
-
 
     QueryExecutor(IGraph graph, int from,int to, int index){
         this.graph= graph;
         this.from= from;
         this.to= to;
         this.index= index;
-
+    }
+    @Override
+    public void run() {
+        shortestDistance= this.graph.getShortestPath(from,to);
     }
 
     public int getIndex() {
@@ -26,8 +28,5 @@ public class QueryExecutor implements Runnable{
     public int getShortestDistance() {
         return shortestDistance;
     }
-    @Override
-    public void run() {
-        shortestDistance= this.graph.getShortestPath(from,to);
-    }
+
 }

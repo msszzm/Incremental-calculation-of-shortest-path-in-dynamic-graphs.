@@ -11,12 +11,12 @@ import java.rmi.registry.Registry;
 import java.util.Random;
 
 public class Client implements Runnable {
-    public static final int NUMBER_OF_GRAPH_NODES= 1000;
+    public static final int NUMBER_OF_GRAPH_NODES= 10000;
     public static final String[] QUERIES_TYPES= new String[]{"Q","A","D"};
     public static Random random= new Random();
     public static final int MAX_TIME_MILLI= 5000;
     public static final int NUMBER_OF_CLIENTS= 100;
-    public static final int MIN_NUMBER_OF_RECORDS= 10000;
+    public static final int MIN_NUMBER_OF_RECORDS= 4000;
     public  String responseWriter;
     public String clientWriter;
     public static int counter= MIN_NUMBER_OF_RECORDS; //Minimum number of records required to end.

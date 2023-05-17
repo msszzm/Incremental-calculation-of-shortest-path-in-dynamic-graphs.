@@ -1,3 +1,5 @@
+package server;
+
 import datastructure.Graph;
 import datastructure.IGraph;
 import remoteBatch.BatchHandler;
